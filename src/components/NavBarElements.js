@@ -13,6 +13,21 @@ export const Nav = styled.nav`
   /* justify-content: flex-start; */
 `;
 
+export const Rectangulo = styled.nav`
+  background: #EC6F66;
+  height: 80px;
+  display: flex;
+  border: 4px solid black;
+  background: -webkit-linear-gradient(to right, #F3A183, #EC6F66);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F3A183, #EC6F66); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  justify-content: space-between;
+  padding: 0.5rem calc((100vw - 1000px) / 2);
+  z-index: 10;
+  /* Third Nav */
+  /* justify-content: flex-start; */
+`;
+
 export const NavLink = styled(Link)`
   color: #fff;
   display: flex;
