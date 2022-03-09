@@ -44,7 +44,7 @@ export const Rectangulo2 = styled.nav`
 `;
 
 export const Contenedor = styled.nav`
-  height: 325px;
+  height: 400px;
   display: flex;
   border: 4px solid black;
   background: #ECE9E6;  /* fallback for old browsers */
