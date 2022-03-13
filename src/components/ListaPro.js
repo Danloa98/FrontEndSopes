@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Table } from 'reactstrap';
 import io from 'socket.io-client';
 import './Tabla.css';
+import { Rectangulo, Rectangulo2, Contenedor } from "./NavBarElements";
+import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 
 const baseUrl = "http://localhost:5000";
 const baseUrl2 = "http://34.107.243.225";
@@ -12,6 +14,8 @@ function ListaPro() {
   const [procesos,setProcesos] = useState([])
   const [operaciones,setOperations] = useState([])
   const [lista,setLista] = useState([])
+  const [currentp,setCurrentp] = useState([])
+
   
   
 
@@ -19,8 +23,40 @@ function ListaPro() {
     console.log("Wenassssss")
     console.log(data)
     //console.log(data[0].vm)
-    setProcesos(tot=> data)
+    setProcesos(tot=> data[data.length-1].process_list)
+    setCurrentp(tot=> data[data.length-1].vm)
    // setLista(oldArray => [...oldArray, data[data.length-1].process_list[data[data.length-1].process_list.length-1]])
+  }
+
+  function definirState(data){
+    if(data=="0"){
+      return "Corriendo"
+    }else if( data=="1"){
+      return "Interrumpible"
+    }else if(data=="2"){
+      return "Ininterrumpible"
+    }else if(data=="4"){
+      return "Detenida"
+    }else if(data=="8"){
+      return "Recorrida"
+    }else if(data=="16"){
+      return "EXIT_DEAD"
+    }else if(data=="32"){
+      return "EXIT_Zombie"
+    }else if(data=="64"){
+      return "TASK_DEAD"
+    }else if(data=="128"){
+      return "TASK_WAKEKILL"
+    }else if(data=="256"){
+      return "TASK_WAKING"
+    }else if(data=="512"){
+      return "TASK_PARKED"
+    }else if(data=="1024" || data=="1026"){
+      return "TASK_NOLOAD"
+    }else if(data=="2048"){
+      return "TASK_STATE_MAX"
+    }
+
   }
 
   useEffect(() => {
@@ -56,12 +92,14 @@ function ListaPro() {
 
 
   return (
-    
-    <table className="table" border='1'>
+<div>
+
+ 
+  <table className="table" border='1'>
     <thead>
       <tr>
         <th>
-          VM
+          VM2
         </th>
         <th>
           Nombre del proceso 
@@ -82,15 +120,16 @@ function ListaPro() {
     </thead>
     <tbody>
 
-    {procesos.map(( {vm,process_list}, index ) => {
+    {procesos.map(( {name,pid,parent_pid,state,sons_list}, index ) => {
           return (
             <tr>
-              <td>{vm}</td>
-              <td>{process_list[process_list.length-1].name}</td>
-              <td>{process_list[process_list.length-1].pid}</td>
-              <td>{process_list[process_list.length-1].parent_pid}</td>
-              <td>{process_list[process_list.length-1].state}</td>
-              <td></td>
+              <td>{currentp}</td>
+              <td>{name}</td>
+              <td>{pid}</td>
+              <td>{parent_pid}</td>
+              <td>{definirState(state)}</td>
+              <td>{<JsonView data={sons_list} shouldInitiallyExpand={(level) => false} style={darkStyles} />}</td>
+              
             </tr>
           );
         })}
@@ -100,6 +139,11 @@ function ListaPro() {
            
     </tbody>
   </table>
+
+ 
+  </div>
+
+  
   
   )
 }
