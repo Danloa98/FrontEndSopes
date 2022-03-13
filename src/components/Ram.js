@@ -25,6 +25,7 @@ function Ram () {
   const [axis, setAxis] = useState([0])
 //------------DATA VM2---------
   const [total2, setTotal2] = useState([])
+
   const [consumida2, setConsumida2] = useState([])
   const [porcentaje2, setPorcentaje2] = useState([])
   const [libre2, setLibre2] = useState([])
@@ -49,6 +50,9 @@ function Ram () {
     }
 
   }
+
+
+  //sssssss
 
   //-----------SOCKET CONNECTION
   const socket = io.connect(baseUrl);
@@ -75,6 +79,7 @@ function Ram () {
 
 
 
+  
 
   const getInfo = async() => {
     await fetch(`${baseUrl2}`, {
@@ -141,7 +146,7 @@ function Ram () {
             labels: axis,
             datasets: [
               {
-                label: "VM1%",
+                label: "VM1 %",
                 data: porcgraph1,
                 borderColor: "orange",
                 borderWidth: 1,
