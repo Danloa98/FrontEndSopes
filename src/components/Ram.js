@@ -7,7 +7,7 @@ import { Rectangulo, Rectangulo2, Contenedor, Cartel } from "./NavBarElements";
 
 defaults.global.tooltips.enabled = false;
 defaults.global.legend.position = "bottom";
-const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
+const baseUrl = "http://localhost:5000";
 const baseUrl2 = "https://34.149.160.8/RAM";
 const counter=1
 
@@ -59,6 +59,7 @@ function Ram () {
  
   //-------------------
   useEffect(() => {
+    socket.connect()
     const interval = setInterval(() => {
       getInfo()
       setPorcgraph1(datos=>[...datos,porcentaje])
@@ -70,7 +71,9 @@ function Ram () {
     socket.on("ram", async (mensaje) => {
     console.log("MENSAJE: ", mensaje);
     totalRams(mensaje)
+    socket.disconnect()
     })
+    
     return () => clearInterval(interval);
   }, [socket]);
   const tempInt = []

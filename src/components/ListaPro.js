@@ -5,7 +5,7 @@ import './Tabla.css';
 import { Rectangulo, Rectangulo2, Contenedor } from "./NavBarElements";
 import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 
-const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
+const baseUrl = "http://localhost:5000";
 const baseUrl2 = "https://34.149.160.8/CPU";
 
 const socket = io.connect(baseUrl);
@@ -51,15 +51,18 @@ function ListaPro() {
       return "TASK_WAKING"
     }else if(data=="512"){
       return "TASK_PARKED"
-    }else if(data=="1024" || data=="1026"){
+    }else if(data=="1024"){
       return "TASK_NOLOAD"
     }else if(data=="2048"){
       return "TASK_STATE_MAX"
+    }else if(data=="1026"){
+      return "SLEEPING"
     }
 
   }
 
   useEffect(() => {
+    socket.connect()
     const interval = setInterval(() => {
       getInfo()
     }, 5000);
@@ -67,6 +70,7 @@ function ListaPro() {
     socket.on("cpu", async (mensaje) => {
     console.log("MENSAJE: ", mensaje);
     llenar(mensaje)
+    socket.disconnect()
     //totalRams(mensaje)
     })
 
