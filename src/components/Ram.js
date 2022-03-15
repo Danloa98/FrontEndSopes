@@ -7,7 +7,7 @@ import { Rectangulo, Rectangulo2, Contenedor, Cartel } from "./NavBarElements";
 
 defaults.global.tooltips.enabled = false;
 defaults.global.legend.position = "bottom";
-const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
+const baseUrl = "*";
 const baseUrl2 = "https://34.149.160.8/RAM";
 const counter=1
 
@@ -84,15 +84,7 @@ function Ram () {
   const getInfo = async() => {
     await fetch(`${baseUrl2}`, {
         method: 'GET',
-        headers: {
-            "Content-Type": "application/json"
-        
-        }
     })
-    .then(resp => resp.json())
-    .then(data => {
-      setOperations(data)  
-    }).catch(console.error)
   }
 
   //-----DESIGN----

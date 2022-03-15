@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import io from 'socket.io-client';
 import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 
-const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
+const baseUrl = "*";
 
 
 const socket = io.connect(baseUrl);
@@ -28,7 +28,7 @@ function Logs() {
 
   useEffect(() => {
 
-    socket.emit("log", "asd-prueba");    
+    //socket.emit("log", "asd-prueba");    
     socket.on("log", async (mensaje) => {
     console.log("MENSAJE: ", mensaje);
     llenar(mensaje)

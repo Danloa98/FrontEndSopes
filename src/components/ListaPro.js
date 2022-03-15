@@ -5,7 +5,7 @@ import './Tabla.css';
 import { Rectangulo, Rectangulo2, Contenedor } from "./NavBarElements";
 import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 
-const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
+const baseUrl = "*";
 const baseUrl2 = "https://34.149.160.8/CPU";
 
 const socket = io.connect(baseUrl);
