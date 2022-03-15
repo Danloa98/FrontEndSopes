@@ -77,6 +77,10 @@ function ListaPro() {
     return () => clearInterval(interval);
   }, [socket]);
 
+  const tempInt = []
+  console.log(tempInt);
+  console.log("sali")
+
 
   const getInfo = async() => {
     await fetch(`${baseUrl2}`, {
