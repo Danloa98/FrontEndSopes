@@ -81,15 +81,7 @@ function ListaPro() {
   const getInfo = async() => {
     await fetch(`${baseUrl2}`, {
         method: 'GET',
-        headers: {
-            "Content-Type": "application/json"
-        
-        }
     })
-    .then(resp => resp.json())
-    .then(data => {
-      setOperations(data)  
-    }).catch(console.error)
   }
 
   console.log(lista)
