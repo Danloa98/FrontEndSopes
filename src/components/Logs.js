@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import io from 'socket.io-client';
 import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 
-const baseUrl = "http://localhost:5000";
+const baseUrl = "https://loyal-operation-341718.uc.r.appspot.com";
 
 
 const socket = io.connect(baseUrl);
