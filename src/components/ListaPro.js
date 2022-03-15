@@ -62,7 +62,7 @@ function ListaPro() {
   }
 
   useEffect(() => {
-    socket.connect()
+    //socket.connect()
     const interval = setInterval(() => {
       getInfo()
     }, 5000);
@@ -70,7 +70,7 @@ function ListaPro() {
     socket.on("cpu", async (mensaje) => {
     console.log("MENSAJE: ", mensaje);
     llenar(mensaje)
-    socket.disconnect()
+    //socket.disconnect()
     //totalRams(mensaje)
     })
 
