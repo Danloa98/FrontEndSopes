@@ -53,7 +53,7 @@ function Ram () {
       clearInterval(interval);
       console.log("RAM UNMOUNTED")
       socket.current.disconnect();
-    };  }, [porcentaje, porcentaje2, porcgraph1, porcgraph2]);
+    };  }, [socket,porcentaje,porcentaje2]);
 
 
   function totalRams(data){
