@@ -38,8 +38,8 @@ function Ram () {
     socket.current = io.connect("https://loyal-operation-341718.uc.r.appspot.com");
     const interval = setInterval(() => {
       getInfo()
-      setPorcgraph1(datos=>[...porcgraph1,porcentaje])
-      setPorcgraph2(datos=>[...porcgraph2,porcentaje2])
+      setPorcgraph1(datos=>[...datos,porcentaje])
+      setPorcgraph2(datos=>[...datos,porcentaje2])
       setAxis(datos=>[...datos,datos[datos.length-1]+1])
     }, 5000);
     
@@ -53,7 +53,7 @@ function Ram () {
       clearInterval(interval);
       console.log("RAM UNMOUNTED")
       socket.current.disconnect();
-    };  }, []);
+    };  }, [porcentaje, porcentaje2, porcgraph1, porcgraph2]);
 
 
   function totalRams(data){
